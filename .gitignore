@@ -1,0 +1,22 @@
+.venv# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes Virtuais
+venv/
+env/
+.env
+
+# Banco de Dados Local
+*.sqlite
+*.db
+
+# Dados Temporários e Logs
+data/*.csv
+logs/
+*.log
+
+# IDEs
+.vscode/
+.idea/

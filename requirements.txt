@@ -1,0 +1,5 @@
+plotly
+python-dotenv
+pandas
+httpx
+streamlit
