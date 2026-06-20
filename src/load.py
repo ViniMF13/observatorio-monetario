@@ -19,6 +19,21 @@ def execute_sql_script(cursor, script_path):
         logging.error(f"Erro ao executar {script_path}: {e}")
         raise
 
+def execute_analysis_query():
+    """Cria as views analíticas no banco."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    try:
+        for script in ["sql/04_queries.sql", "sql/04_view.sql"]:
+            import os
+            if os.path.exists(script):
+                execute_sql_script(cursor, script)
+        conn.commit()
+    except Exception as e:
+        logging.error(f"Erro ao criar views: {e}")
+    finally:
+        conn.close()
+
 def run_load_and_transform():
     logging.info("Iniciando processo de Carga e Transformação (ELT)...")
     
@@ -41,8 +56,8 @@ def run_load_and_transform():
         execute_sql_script(cursor, "sql/03_transform.sql")
         
         # Limpeza: Dropa a staging para não gastar espaço no disco
-        # cursor.execute("DROP TABLE staging_sgs;")
-        # logging.info("Tabela staging_sgs descartada.")
+        cursor.execute("DROP TABLE staging_sgs;")
+        logging.info("Tabela staging_sgs descartada.")
         
         # Confirma as transações
         conn.commit()

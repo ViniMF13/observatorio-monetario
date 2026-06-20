@@ -11,6 +11,8 @@ env/
 # Banco de Dados Local
 *.sqlite
 *.db
+*.csv
+.DS_Store
 
 # Dados Temporários e Logs
 data/*.csv
@@ -20,3 +22,5 @@ logs/
 # IDEs
 .vscode/
 .idea/
+data/raw/sgs_data_bruto.csv
+data/raw/sgs_data_bruto.csv

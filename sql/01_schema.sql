@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Categoria (
     descricao_categoria TEXT
 );
 
--- Tabela 2: INDICADOR_MACRO (O catálogo das séries do BCB)
+-- Tabela 2: INDICADOR (O catálogo das séries do BCB)
 CREATE TABLE IF NOT EXISTS Indicador (
     codigo_sgs INTEGER PRIMARY KEY,
     nome_indicador TEXT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Indicador (
 CREATE TABLE IF NOT EXISTS Registro (
     id_registro INTEGER PRIMARY KEY AUTOINCREMENT,
     data_registro TEXT NOT NULL,     -- Formato: YYYY-MM (ex: '1994-07')
-    valor_fechamento REAL NOT NULL,
+    valor_registro REAL NOT NULL,
     fk_cod_sgs INTEGER NOT NULL,
     FOREIGN KEY (fk_cod_sgs) REFERENCES Indicador(codigo_sgs),
     
